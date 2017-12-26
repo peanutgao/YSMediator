@@ -1,0 +1,15 @@
+//
+//  PrefixHeader.pch
+//  Mediator
+//
+//  Created by Joseph Gao on 2017/4/6.
+//  Copyright © 2017年 Joseph. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "YSMediator.h"
+
+
+#endif /* PrefixHeader_pch */

@@ -1,0 +1,406 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7C637B381E96750C00B6EE96 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C637B371E96750C00B6EE96 /* main.m */; };
+		7C637B3B1E96750C00B6EE96 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C637B3A1E96750C00B6EE96 /* AppDelegate.m */; };
+		7C637B431E96750C00B6EE96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C637B421E96750C00B6EE96 /* Assets.xcassets */; };
+		7C637B461E96750C00B6EE96 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C637B441E96750C00B6EE96 /* LaunchScreen.storyboard */; };
+		7C7330F81FDE601000A945B3 /* OneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7330F71FDE601000A945B3 /* OneViewController.m */; };
+		7C7330FD1FDE604900A945B3 /* TwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7330FC1FDE604900A945B3 /* TwoViewController.m */; };
+		7C7E103E1FDE6B12003BE804 /* OneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C7E103D1FDE6B12003BE804 /* OneViewController.xib */; };
+		7C7E10401FDE71C2003BE804 /* TwoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C7E103F1FDE71C2003BE804 /* TwoViewController.xib */; };
+		7C7E104F1FDF6C57003BE804 /* BaseWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E104D1FDF6C57003BE804 /* BaseWebViewController.m */; };
+		7C7E10571FDF6D08003BE804 /* SchemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C7E10551FDF6D08003BE804 /* SchemeViewController.m */; };
+		7C7E10581FDF6D08003BE804 /* SchemeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C7E10561FDF6D08003BE804 /* SchemeViewController.xib */; };
+		7CE706B91FDE5C7C00C929C0 /* YSMediator+TargetAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE706AF1FDE5C7C00C929C0 /* YSMediator+TargetAction.m */; };
+		7CE706BA1FDE5C7C00C929C0 /* YSMediator+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE706B01FDE5C7C00C929C0 /* YSMediator+Tools.m */; };
+		7CE706BB1FDE5C7C00C929C0 /* YSMediator+Transition.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE706B21FDE5C7C00C929C0 /* YSMediator+Transition.m */; };
+		7CE706BC1FDE5C7C00C929C0 /* YSMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE706B31FDE5C7C00C929C0 /* YSMediator.m */; };
+		7CE706BD1FDE5C7C00C929C0 /* YSMapModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE706B61FDE5C7C00C929C0 /* YSMapModel.m */; };
+		7CE706BE1FDE5C7C00C929C0 /* YSMediator+Router.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE706B81FDE5C7C00C929C0 /* YSMediator+Router.m */; };
+		7CE706C21FDE5CC500C929C0 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CE706C01FDE5CC500C929C0 /* MainViewController.m */; };
+		7CE706C61FDE5DC200C929C0 /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CE706C51FDE5DC200C929C0 /* MainViewController.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7C637B331E96750C00B6EE96 /* Mediator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mediator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C637B371E96750C00B6EE96 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7C637B391E96750C00B6EE96 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7C637B3A1E96750C00B6EE96 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7C637B421E96750C00B6EE96 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7C637B451E96750C00B6EE96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7C637B471E96750C00B6EE96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C637B531E967ABA00B6EE96 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		7C7330F61FDE601000A945B3 /* OneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OneViewController.h; sourceTree = "<group>"; };
+		7C7330F71FDE601000A945B3 /* OneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OneViewController.m; sourceTree = "<group>"; };
+		7C7330FB1FDE604900A945B3 /* TwoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TwoViewController.h; sourceTree = "<group>"; };
+		7C7330FC1FDE604900A945B3 /* TwoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwoViewController.m; sourceTree = "<group>"; };
+		7C7E103D1FDE6B12003BE804 /* OneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OneViewController.xib; sourceTree = "<group>"; };
+		7C7E103F1FDE71C2003BE804 /* TwoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoViewController.xib; sourceTree = "<group>"; };
+		7C7E104C1FDF6C57003BE804 /* BaseWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseWebViewController.h; sourceTree = "<group>"; };
+		7C7E104D1FDF6C57003BE804 /* BaseWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseWebViewController.m; sourceTree = "<group>"; };
+		7C7E10541FDF6D08003BE804 /* SchemeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SchemeViewController.h; sourceTree = "<group>"; };
+		7C7E10551FDF6D08003BE804 /* SchemeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SchemeViewController.m; sourceTree = "<group>"; };
+		7C7E10561FDF6D08003BE804 /* SchemeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SchemeViewController.xib; sourceTree = "<group>"; };
+		7CE706AD1FDE5C7C00C929C0 /* YSMediator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSMediator.h; sourceTree = "<group>"; };
+		7CE706AE1FDE5C7C00C929C0 /* YSMediator+TargetAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YSMediator+TargetAction.h"; sourceTree = "<group>"; };
+		7CE706AF1FDE5C7C00C929C0 /* YSMediator+TargetAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YSMediator+TargetAction.m"; sourceTree = "<group>"; };
+		7CE706B01FDE5C7C00C929C0 /* YSMediator+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YSMediator+Tools.m"; sourceTree = "<group>"; };
+		7CE706B11FDE5C7C00C929C0 /* YSMediator+Transition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YSMediator+Transition.h"; sourceTree = "<group>"; };
+		7CE706B21FDE5C7C00C929C0 /* YSMediator+Transition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YSMediator+Transition.m"; sourceTree = "<group>"; };
+		7CE706B31FDE5C7C00C929C0 /* YSMediator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSMediator.m; sourceTree = "<group>"; };
+		7CE706B41FDE5C7C00C929C0 /* YSMediator+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YSMediator+Tools.h"; sourceTree = "<group>"; };
+		7CE706B51FDE5C7C00C929C0 /* YSMapModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YSMapModel.h; sourceTree = "<group>"; };
+		7CE706B61FDE5C7C00C929C0 /* YSMapModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YSMapModel.m; sourceTree = "<group>"; };
+		7CE706B71FDE5C7C00C929C0 /* YSMediator+Router.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YSMediator+Router.h"; sourceTree = "<group>"; };
+		7CE706B81FDE5C7C00C929C0 /* YSMediator+Router.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YSMediator+Router.m"; sourceTree = "<group>"; };
+		7CE706BF1FDE5CC500C929C0 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		7CE706C01FDE5CC500C929C0 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		7CE706C51FDE5DC200C929C0 /* MainViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainViewController.storyboard; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7C637B301E96750C00B6EE96 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7C637B2A1E96750C00B6EE96 = {
+			isa = PBXGroup;
+			children = (
+				7C637B351E96750C00B6EE96 /* Mediator */,
+				7C637B341E96750C00B6EE96 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7C637B341E96750C00B6EE96 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7C637B331E96750C00B6EE96 /* Mediator.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7C637B351E96750C00B6EE96 /* Mediator */ = {
+			isa = PBXGroup;
+			children = (
+				7C637B391E96750C00B6EE96 /* AppDelegate.h */,
+				7C637B3A1E96750C00B6EE96 /* AppDelegate.m */,
+				7C9307D51E9F474300494260 /* Mediator */,
+				7C9307C21E9F14BE00494260 /* MainViewController */,
+				7C637B421E96750C00B6EE96 /* Assets.xcassets */,
+				7C637B441E96750C00B6EE96 /* LaunchScreen.storyboard */,
+				7C637B471E96750C00B6EE96 /* Info.plist */,
+				7C637B531E967ABA00B6EE96 /* PrefixHeader.pch */,
+				7C637B361E96750C00B6EE96 /* Supporting Files */,
+			);
+			path = Mediator;
+			sourceTree = "<group>";
+		};
+		7C637B361E96750C00B6EE96 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7C637B371E96750C00B6EE96 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7C9307C21E9F14BE00494260 /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7CE706BF1FDE5CC500C929C0 /* MainViewController.h */,
+				7CE706C01FDE5CC500C929C0 /* MainViewController.m */,
+				7CE706C51FDE5DC200C929C0 /* MainViewController.storyboard */,
+				7C7330F61FDE601000A945B3 /* OneViewController.h */,
+				7C7330F71FDE601000A945B3 /* OneViewController.m */,
+				7C7E103D1FDE6B12003BE804 /* OneViewController.xib */,
+				7C7330FB1FDE604900A945B3 /* TwoViewController.h */,
+				7C7330FC1FDE604900A945B3 /* TwoViewController.m */,
+				7C7E103F1FDE71C2003BE804 /* TwoViewController.xib */,
+				7C7E10541FDF6D08003BE804 /* SchemeViewController.h */,
+				7C7E10551FDF6D08003BE804 /* SchemeViewController.m */,
+				7C7E10561FDF6D08003BE804 /* SchemeViewController.xib */,
+				7C7E104C1FDF6C57003BE804 /* BaseWebViewController.h */,
+				7C7E104D1FDF6C57003BE804 /* BaseWebViewController.m */,
+			);
+			path = MainViewController;
+			sourceTree = "<group>";
+		};
+		7C9307D51E9F474300494260 /* Mediator */ = {
+			isa = PBXGroup;
+			children = (
+				7CE706AD1FDE5C7C00C929C0 /* YSMediator.h */,
+				7CE706B31FDE5C7C00C929C0 /* YSMediator.m */,
+				7CE706B51FDE5C7C00C929C0 /* YSMapModel.h */,
+				7CE706B61FDE5C7C00C929C0 /* YSMapModel.m */,
+				7CE706B71FDE5C7C00C929C0 /* YSMediator+Router.h */,
+				7CE706B81FDE5C7C00C929C0 /* YSMediator+Router.m */,
+				7CE706B11FDE5C7C00C929C0 /* YSMediator+Transition.h */,
+				7CE706B21FDE5C7C00C929C0 /* YSMediator+Transition.m */,
+				7CE706AE1FDE5C7C00C929C0 /* YSMediator+TargetAction.h */,
+				7CE706AF1FDE5C7C00C929C0 /* YSMediator+TargetAction.m */,
+				7CE706B41FDE5C7C00C929C0 /* YSMediator+Tools.h */,
+				7CE706B01FDE5C7C00C929C0 /* YSMediator+Tools.m */,
+			);
+			path = Mediator;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7C637B321E96750C00B6EE96 /* Mediator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7C637B4A1E96750C00B6EE96 /* Build configuration list for PBXNativeTarget "Mediator" */;
+			buildPhases = (
+				7C637B2F1E96750C00B6EE96 /* Sources */,
+				7C637B301E96750C00B6EE96 /* Frameworks */,
+				7C637B311E96750C00B6EE96 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Mediator;
+			productName = Mediator;
+			productReference = 7C637B331E96750C00B6EE96 /* Mediator.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7C637B2B1E96750C00B6EE96 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = Joseph;
+				TargetAttributes = {
+					7C637B321E96750C00B6EE96 = {
+						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = 38F93BBR74;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 7C637B2E1E96750C00B6EE96 /* Build configuration list for PBXProject "Mediator" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7C637B2A1E96750C00B6EE96;
+			productRefGroup = 7C637B341E96750C00B6EE96 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7C637B321E96750C00B6EE96 /* Mediator */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7C637B311E96750C00B6EE96 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CE706C61FDE5DC200C929C0 /* MainViewController.storyboard in Resources */,
+				7C637B461E96750C00B6EE96 /* LaunchScreen.storyboard in Resources */,
+				7C7E10581FDF6D08003BE804 /* SchemeViewController.xib in Resources */,
+				7C637B431E96750C00B6EE96 /* Assets.xcassets in Resources */,
+				7C7E10401FDE71C2003BE804 /* TwoViewController.xib in Resources */,
+				7C7E103E1FDE6B12003BE804 /* OneViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7C637B2F1E96750C00B6EE96 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7CE706BC1FDE5C7C00C929C0 /* YSMediator.m in Sources */,
+				7CE706BB1FDE5C7C00C929C0 /* YSMediator+Transition.m in Sources */,
+				7C7E104F1FDF6C57003BE804 /* BaseWebViewController.m in Sources */,
+				7CE706BE1FDE5C7C00C929C0 /* YSMediator+Router.m in Sources */,
+				7C7330FD1FDE604900A945B3 /* TwoViewController.m in Sources */,
+				7CE706C21FDE5CC500C929C0 /* MainViewController.m in Sources */,
+				7CE706B91FDE5C7C00C929C0 /* YSMediator+TargetAction.m in Sources */,
+				7CE706BD1FDE5C7C00C929C0 /* YSMapModel.m in Sources */,
+				7C7E10571FDF6D08003BE804 /* SchemeViewController.m in Sources */,
+				7C637B3B1E96750C00B6EE96 /* AppDelegate.m in Sources */,
+				7CE706BA1FDE5C7C00C929C0 /* YSMediator+Tools.m in Sources */,
+				7C7330F81FDE601000A945B3 /* OneViewController.m in Sources */,
+				7C637B381E96750C00B6EE96 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		7C637B441E96750C00B6EE96 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7C637B451E96750C00B6EE96 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7C637B481E96750C00B6EE96 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		7C637B491E96750C00B6EE96 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7C637B4B1E96750C00B6EE96 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 38F93BBR74;
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
+				GCC_PREFIX_HEADER = Mediator/PrefixHeader.pch;
+				INFOPLIST_FILE = Mediator/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.peanutgao.Mediator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7C637B4C1E96750C00B6EE96 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 38F93BBR74;
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
+				GCC_PREFIX_HEADER = Mediator/PrefixHeader.pch;
+				INFOPLIST_FILE = Mediator/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.peanutgao.Mediator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7C637B2E1E96750C00B6EE96 /* Build configuration list for PBXProject "Mediator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C637B481E96750C00B6EE96 /* Debug */,
+				7C637B491E96750C00B6EE96 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7C637B4A1E96750C00B6EE96 /* Build configuration list for PBXNativeTarget "Mediator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7C637B4B1E96750C00B6EE96 /* Debug */,
+				7C637B4C1E96750C00B6EE96 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7C637B2B1E96750C00B6EE96 /* Project object */;
+}
