@@ -77,11 +77,11 @@ typedef NS_ENUM(NSInteger, YSMediatorShowType) {
                      animated:(BOOL)flag
                      callBack:(void (^)(void))callBack {
     [self jumpToTargetVC:vc
-               withParams:params
-                 animated:flag
-                 showType:YSMediatorShowTypePresent
-    transitioningDelegate:nil
-                 callBack:callBack];
+              withParams:params
+                animated:flag
+                showType:YSMediatorShowTypePresent
+   transitioningDelegate:nil
+                callBack:callBack];
 }
 
 
@@ -112,10 +112,10 @@ typedef NS_ENUM(NSInteger, YSMediatorShowType) {
 
 + (void)jumpToTargetVC:(__kindof UIViewController *)targetVC
             withParams:(NSDictionary *)params
-                animated:(BOOL)flag
+              animated:(BOOL)flag
               showType:(YSMediatorShowType)showType
-transitioningDelegate:(id<UIViewControllerTransitioningDelegate>)delegate
-                    callBack:(void(^)(void))callBack {
+ transitioningDelegate:(id<UIViewControllerTransitioningDelegate>)delegate
+              callBack:(void(^)(void))callBack {
     
     // 属性赋值
     [self setPropretyOfTarget:targetVC withParams:params handle:^(UIViewController *targetVC) {
@@ -186,7 +186,7 @@ transitioningDelegate:(id<UIViewControllerTransitioningDelegate>)delegate
         YSMediatorAssert(@"返回的控制器名不能为空"); return;
     }
     
-
+    
     Class clazz = NSClassFromString(vcName);
     if (clazz) {
         [self popToViewControllerByVCClass:clazz animated:flag];
@@ -217,7 +217,7 @@ transitioningDelegate:(id<UIViewControllerTransitioningDelegate>)delegate
             return;
         }
     }
-
+    
     // 到此标明遍历结束, 在堆栈中没有找到要pop的控制器
     YSMediatorAssert(@"当前NavController堆栈中没有当前类型的控制器对象");
 }
@@ -251,15 +251,14 @@ transitioningDelegate:(id<UIViewControllerTransitioningDelegate>)delegate
 #pragma mark - Other
 
 + (void)searchMapInfoWithName:(NSString *)name
-                      params:(NSDictionary *)params
+                       params:(NSDictionary *)params
                        result:(void(^)(NSString *vcClass, NSDictionary *fixedParams))result {
     YSMapModel *map = [self mapModelWithName:name];
     NSDictionary *fixedParams = params;
     NSString *vcName = name;
     if (map) {
         vcName = map.mapClassName;
-        fixedParams = map.paramsMapDict;
-        if (fixedParams) {
+        if (map.paramsMapDict) {
             fixedParams = [self fixParams:params withMapDict:fixedParams];
         }
     }
@@ -271,7 +270,7 @@ transitioningDelegate:(id<UIViewControllerTransitioningDelegate>)delegate
 
 + (YSMapModel *)mapModelWithName:(NSString *)name {
     __block YSMapModel *result = nil;
-
+    
     result = [[YSMediator shareMediator].mapInfoDict objectForKey:[NSString stringWithFormat:@"/%@", name]];
     if (result) return result;
     
@@ -289,5 +288,5 @@ transitioningDelegate:(id<UIViewControllerTransitioningDelegate>)delegate
     return result;
 }
 
-
 @end
+
