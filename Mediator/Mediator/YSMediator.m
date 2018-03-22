@@ -57,6 +57,16 @@ static YSMediator *_instance;
 + (BOOL)mapName:(NSString *_Nonnull)name
     toClassName:(NSString *_Nonnull)toClassName
      withParams:(NSDictionary *_Nullable)paramsMapDict {
+    return [self mapName:name
+             toClassName:toClassName
+         isAsBaseWebView:NO
+              withParams:paramsMapDict];
+}
+
++ (BOOL)mapName:(NSString *_Nonnull)name
+    toClassName:(NSString *_Nonnull)toClassName
+isAsBaseWebView:(BOOL)isBaseWebView
+     withParams:(NSDictionary *_Nullable)paramsMapDict {
     if (isEmptyString(name) || isEmptyString(toClassName)) {
         YSMediatorAssert(@"映射信息不能为空!!!") return NO;
     }
@@ -70,6 +80,7 @@ static YSMediator *_instance;
                                           paramsMapDict: paramsMapDict];
     [[YSMediator shareMediator].mapInfoDictM setObject:mapData forKey:path];
     [YSMediator shareMediator]->_mapInfoDict = [YSMediator shareMediator].mapInfoDictM.copy;
+    if (isBaseWebView) [YSMediator shareMediator]->_baseWebClassName = mapData.mapClassName;
     
     return YES;
 }
@@ -90,7 +101,11 @@ static YSMediator *_instance;
 @implementation NSObject (YSMediator)
 
 + (void)mapName:(NSString *_Nonnull)name withParams:(NSDictionary *_Nullable)paramsMapDict {
-    [YSMediator mapName:name toClassName:NSStringFromClass(self.class) withParams:paramsMapDict];
+    [YSMediator mapName:name toClassName:NSStringFromClass(self.class) isAsBaseWebView:NO withParams:paramsMapDict];
+}
+
++ (void)mapAsBaseWebViewWithName:(NSString *_Nonnull)name andParams:(NSDictionary *_Nullable)paramsMapDict {
+    [YSMediator mapName:name toClassName:NSStringFromClass(self.class) isAsBaseWebView:YES withParams:paramsMapDict];
 }
 
 @end

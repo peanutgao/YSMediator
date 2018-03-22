@@ -72,5 +72,6 @@
  */
 + (void)popToViewControllerName:(NSString *)vcName animated:(BOOL)flag;
 
++ (UIViewController *)topViewController;
 
 @end

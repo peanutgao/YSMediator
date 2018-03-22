@@ -100,11 +100,8 @@ static const void *ys_sort_block = "ys_sort_block";
     }
     
     NSURL *url = [NSURL URLWithString:urlStr];
-    if (url.path.length == 0) {
-        BOOL b = [self tryToOpenInWebView:urlStr withSorted:sorted];
-        if (b) return;
-    }
-    
+    BOOL b = [self tryToOpenInWebView:urlStr withSorted:sorted];
+    if (b) return;
     
     void(^failureHandler)() = ^{
         NSLog(@"无法打开URL:\n<当前Scheme: %@, 注册的Scheme: %@>\n<当前Host: %@, 注册的Host: %@>",\
@@ -142,12 +139,16 @@ static const void *ys_sort_block = "ys_sort_block";
         
         Class clazz = NSClassFromString([YSMediator shareMediator].baseWebClassName);
         objc_property_t property = class_getProperty(clazz, kWebViewURLPropertyKey);
+        if (!property) {
+            // @property (nonatomic, copy) NSString *urlString;
+            YSMediatorAssert(@"注册的web控制器需要添加接受 url 的字符串属性 urlString "); return NO;
+        }
         NSString *attributesName = [NSString stringWithUTF8String:property_getAttributes(property)];
-        if (!property || ![attributesName containsString:@"T@\"NSString\""]) {
+        if (![attributesName containsString:@"T@\"NSString\""]) {
             YSMediatorAssert(@"注册的web控制器需要添加接受 url 的字符串属性 urlString "); return NO;
         }
         
-        NSDictionary *params = [self paramsDictWithURL:[NSURL URLWithString:urlStr]];
+        NSDictionary *params = @{[NSString stringWithUTF8String:kWebViewURLPropertyKey]: urlStr};
         if (sorted) {
             BOOL b = sorted(params);
             if (!b) return NO;

@@ -77,11 +77,11 @@ typedef NS_ENUM(NSInteger, YSMediatorShowType) {
                      animated:(BOOL)flag
                      callBack:(void (^)(void))callBack {
     [self jumpToTargetVC:vc
-              withParams:params
-                animated:flag
-                showType:YSMediatorShowTypePresent
-   transitioningDelegate:nil
-                callBack:callBack];
+               withParams:params
+                 animated:flag
+                 showType:YSMediatorShowTypePresent
+    transitioningDelegate:nil
+                 callBack:callBack];
 }
 
 
@@ -112,19 +112,25 @@ typedef NS_ENUM(NSInteger, YSMediatorShowType) {
 
 + (void)jumpToTargetVC:(__kindof UIViewController *)targetVC
             withParams:(NSDictionary *)params
-              animated:(BOOL)flag
+                animated:(BOOL)flag
               showType:(YSMediatorShowType)showType
- transitioningDelegate:(id<UIViewControllerTransitioningDelegate>)delegate
-              callBack:(void(^)(void))callBack {
+transitioningDelegate:(id<UIViewControllerTransitioningDelegate>)delegate
+                    callBack:(void(^)(void))callBack {
     
     // 属性赋值
     [self setPropretyOfTarget:targetVC withParams:params handle:^(UIViewController *targetVC) {
         UIViewController *from = [self topViewController];
-        UINavigationController *nav = from.navigationController;
         
         // 跳转
         switch (showType) {
             case YSMediatorShowTypePush: {
+                UINavigationController *nav = from.navigationController;
+                if (!nav) {
+                    NSString *str = [NSString stringWithFormat:@"控制器: %@ 没有 NavigationController", from];
+                    YSMediatorAssert(str);
+                    return;
+                }
+                
                 targetVC.hidesBottomBarWhenPushed = YES;
                 [nav pushViewController:targetVC animated:YES];
                 if (callBack) {
@@ -159,23 +165,22 @@ typedef NS_ENUM(NSInteger, YSMediatorShowType) {
 }
 
 + (UIViewController *)topViewController {
-    return [self topViewControllerOfRootViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
+    return [self topViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
 }
 
-+ (UIViewController *)topViewControllerOfRootViewController:(UIViewController *)rootViewController {
-    UIViewController *topVC = rootViewController;
-    
++ (UIViewController *)topViewController:(UIViewController *)rootViewController {
     if ([rootViewController isKindOfClass:[UINavigationController class]]) {
-        UIViewController *lastViewController = [[(UINavigationController *)rootViewController viewControllers] lastObject];
-        topVC = [self topViewControllerOfRootViewController:lastViewController];
+        UINavigationController *navigationController = (UINavigationController *)rootViewController;
+        return [self topViewController:[navigationController.viewControllers lastObject]];
     }
-    
     if ([rootViewController isKindOfClass:[UITabBarController class]]) {
-        UIViewController *selectedVC = [(UITabBarController *)rootViewController selectedViewController];
-        topVC = [self topViewControllerOfRootViewController:selectedVC];
+        UITabBarController *tabBarController = (UITabBarController *)rootViewController;
+        return [self topViewController:tabBarController.selectedViewController];
     }
-    
-    return topVC;
+    if (rootViewController.presentedViewController) {
+        return [self topViewController:rootViewController.presentedViewController];
+    }
+    return rootViewController;
 }
 
 
@@ -186,7 +191,7 @@ typedef NS_ENUM(NSInteger, YSMediatorShowType) {
         YSMediatorAssert(@"返回的控制器名不能为空"); return;
     }
     
-    
+
     Class clazz = NSClassFromString(vcName);
     if (clazz) {
         [self popToViewControllerByVCClass:clazz animated:flag];
@@ -217,7 +222,7 @@ typedef NS_ENUM(NSInteger, YSMediatorShowType) {
             return;
         }
     }
-    
+
     // 到此标明遍历结束, 在堆栈中没有找到要pop的控制器
     YSMediatorAssert(@"当前NavController堆栈中没有当前类型的控制器对象");
 }
@@ -251,7 +256,7 @@ typedef NS_ENUM(NSInteger, YSMediatorShowType) {
 #pragma mark - Other
 
 + (void)searchMapInfoWithName:(NSString *)name
-                       params:(NSDictionary *)params
+                      params:(NSDictionary *)params
                        result:(void(^)(NSString *vcClass, NSDictionary *fixedParams))result {
     YSMapModel *map = [self mapModelWithName:name];
     NSDictionary *fixedParams = params;
@@ -270,7 +275,7 @@ typedef NS_ENUM(NSInteger, YSMediatorShowType) {
 
 + (YSMapModel *)mapModelWithName:(NSString *)name {
     __block YSMapModel *result = nil;
-    
+
     result = [[YSMediator shareMediator].mapInfoDict objectForKey:[NSString stringWithFormat:@"/%@", name]];
     if (result) return result;
     
@@ -289,4 +294,3 @@ typedef NS_ENUM(NSInteger, YSMediatorShowType) {
 }
 
 @end
-
