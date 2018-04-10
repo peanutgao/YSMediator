@@ -91,16 +91,16 @@ static const void *ys_sort_block = "ys_sort_block";
 }
 
 + (void)openURL:(NSString *)urlStr {
-    [self openURL:urlStr withSorted:[YSMediator shareMediator].sorted ?:NULL];
+    [self openURL:urlStr withFilter:[YSMediator shareMediator].sorted ?:NULL];
 }
 
-+ (void)openURL:(NSString *)urlStr withSorted:(BOOL(^)(NSDictionary *params))sorted {
++ (void)openURL:(NSString *)urlStr withFilter:(BOOL(^)(NSDictionary *params))filter {
     if (isEmptyString(urlStr)) {
         YSMediatorAssert(@"urlStr为空!!!"); return;
     }
     
     NSURL *url = [NSURL URLWithString:urlStr];
-    BOOL b = [self tryToOpenInWebView:urlStr withSorted:sorted];
+    BOOL b = [self tryToOpenInWebView:urlStr withFilter:filter];
     if (b) return;
     
     void(^failureHandler)() = ^{
@@ -117,10 +117,10 @@ static const void *ys_sort_block = "ys_sort_block";
             failureHandler();
         }
         
-        [self openInNativePageOfURL:url withMapObj:obj andSorted:sorted];
+        [self openInNativePageOfURL:url withMapObj:obj andFilter:filter];
         
     } failureHandle:^{
-        BOOL b = [self tryToOpenInWebView:urlStr withSorted:sorted];
+        BOOL b = [self tryToOpenInWebView:urlStr withFilter:filter];
         if (b) return;
         
         failureHandler();
@@ -130,7 +130,7 @@ static const void *ys_sort_block = "ys_sort_block";
 
 #pragma mark - Other
 
-+ (BOOL)tryToOpenInWebView:(NSString *)urlStr withSorted:(BOOL(^)(NSDictionary *params))sorted {
++ (BOOL)tryToOpenInWebView:(NSString *)urlStr withFilter:(BOOL(^)(NSDictionary *params))filter {
     NSURL *url = [NSURL URLWithString:urlStr];
     if ([url.scheme isEqualToString:@"http"] || [url.scheme isEqualToString:@"https"]) {
         if ([YSMediator shareMediator].baseWebClassName.length == 0) {
@@ -149,8 +149,8 @@ static const void *ys_sort_block = "ys_sort_block";
         }
         
         NSDictionary *params = @{[NSString stringWithUTF8String:kWebViewURLPropertyKey]: urlStr};
-        if (sorted) {
-            BOOL b = sorted(params);
+        if (filter) {
+            BOOL b = filter(params);
             if (!b) return NO;
         }
 
@@ -167,10 +167,10 @@ static const void *ys_sort_block = "ys_sort_block";
     return NO;
 }
 
-+ (void)openInNativePageOfURL:(NSURL *)url withMapObj:(YSMapModel *)obj andSorted:(BOOL(^)(NSDictionary *params))sorted {
++ (void)openInNativePageOfURL:(NSURL *)url withMapObj:(YSMapModel *)obj andFilter:(BOOL(^)(NSDictionary *params))filter {
     NSDictionary *params = [self paramsDictWithURL:url];
-    if (sorted) {
-        BOOL b = sorted(params);
+    if (filter) {
+        BOOL b = filter(params);
         if (!b) return;
     }
     

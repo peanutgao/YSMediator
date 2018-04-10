@@ -140,18 +140,18 @@
 		7CD1080720639C7E001FCF13 /* Mediator */ = {
 			isa = PBXGroup;
 			children = (
-				7CD1080820639C7E001FCF13 /* YSMapModel.m */,
-				7CD1080920639C7E001FCF13 /* YSMediator+Tools.h */,
-				7CD1080A20639C7E001FCF13 /* YSMediator+TargetAction.m */,
 				7CD1080B20639C7E001FCF13 /* YSMediator.h */,
+				7CD1081120639C7E001FCF13 /* YSMediator.m */,
+				7CD1081020639C7E001FCF13 /* YSMapModel.h */,
+				7CD1080820639C7E001FCF13 /* YSMapModel.m */,
+				7CD1081320639C7E001FCF13 /* YSMediator+Transition.h */,
 				7CD1080C20639C7E001FCF13 /* YSMediator+Transition.m */,
 				7CD1080D20639C7E001FCF13 /* YSMediator+Router.h */,
-				7CD1080E20639C7E001FCF13 /* YSMediator+TargetAction.h */,
-				7CD1080F20639C7E001FCF13 /* YSMediator+Tools.m */,
-				7CD1081020639C7E001FCF13 /* YSMapModel.h */,
-				7CD1081120639C7E001FCF13 /* YSMediator.m */,
 				7CD1081220639C7E001FCF13 /* YSMediator+Router.m */,
-				7CD1081320639C7E001FCF13 /* YSMediator+Transition.h */,
+				7CD1080E20639C7E001FCF13 /* YSMediator+TargetAction.h */,
+				7CD1080A20639C7E001FCF13 /* YSMediator+TargetAction.m */,
+				7CD1080920639C7E001FCF13 /* YSMediator+Tools.h */,
+				7CD1080F20639C7E001FCF13 /* YSMediator+Tools.m */,
 			);
 			path = Mediator;
 			sourceTree = "<group>";

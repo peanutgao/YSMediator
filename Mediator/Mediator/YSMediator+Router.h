@@ -36,9 +36,9 @@
  打开跳转链接
 
  @param urlStr 映射的url字段
- @param sorted 限制跳转的规则
+ @param filter 限制跳转的规则
  */
-+ (void)openURL:(NSString *)urlStr withSorted:(BOOL(^)(NSDictionary *params))sorted;
++ (void)openURL:(NSString *)urlStr withFilter:(BOOL(^)(NSDictionary *params))filter;
 
 
 /**
