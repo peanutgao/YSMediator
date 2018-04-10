@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OneViewController">
+            <connections>
+                <outlet property="view" destination="iN0-l3-epB" id="0AO-jv-ASj"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HlD-03-IDL">
+                    <rect key="frame" x="20" y="100" width="335" height="40"/>
+                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="KUS-qF-XQA"/>
+                    </constraints>
+                    <state key="normal" title="根据要跳转的控制器字符来push页面">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="pushWithVCClassName:" destination="-1" eventType="touchUpInside" id="JZS-DE-JIa"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IFj-St-u0R">
+                    <rect key="frame" x="20" y="160" width="335" height="40"/>
+                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="03P-Ka-Kfo"/>
+                    </constraints>
+                    <state key="normal" title="根据映射的字符来push页面">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="pushByVCMapName:" destination="-1" eventType="touchUpInside" id="I4o-am-L4p"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cpr-yc-EkZ">
+                    <rect key="frame" x="20" y="290" width="335" height="40"/>
+                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="eJC-XU-9HG"/>
+                    </constraints>
+                    <state key="normal" title="根据要跳转的控制器字符来pop页面">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="popByVCClassName:" destination="-1" eventType="touchUpInside" id="NbI-jG-zkj"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dr4-Ue-HpI">
+                    <rect key="frame" x="20" y="410" width="335" height="40"/>
+                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="jtk-08-ums"/>
+                    </constraints>
+                    <state key="normal" title="根据HTML FilePath ../../格式pop页面">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="popByFilePath:" destination="-1" eventType="touchUpInside" id="Y6X-7T-Q1d"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EDo-w9-a0y">
+                    <rect key="frame" x="20" y="350" width="335" height="40"/>
+                    <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="eFn-Dd-5Yg"/>
+                    </constraints>
+                    <state key="normal" title="根据映射的字符来pop页面">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="popByVCMapName:" destination="-1" eventType="touchUpInside" id="BVP-RA-Gg2"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Dr4-Ue-HpI" firstAttribute="top" secondItem="EDo-w9-a0y" secondAttribute="bottom" constant="20" id="3Gf-VX-hdI"/>
+                <constraint firstItem="HlD-03-IDL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="100" id="895-sv-cdS"/>
+                <constraint firstItem="Dr4-Ue-HpI" firstAttribute="width" secondItem="HlD-03-IDL" secondAttribute="width" id="9V2-Ry-lCI"/>
+                <constraint firstItem="IFj-St-u0R" firstAttribute="height" secondItem="HlD-03-IDL" secondAttribute="height" id="KGX-A9-tJz"/>
+                <constraint firstAttribute="bottom" secondItem="Dr4-Ue-HpI" secondAttribute="bottom" constant="217" id="NAl-Sf-itz"/>
+                <constraint firstItem="Dr4-Ue-HpI" firstAttribute="centerX" secondItem="HlD-03-IDL" secondAttribute="centerX" id="Oty-Ik-9tI"/>
+                <constraint firstItem="cpr-yc-EkZ" firstAttribute="width" secondItem="HlD-03-IDL" secondAttribute="width" id="PY9-ET-bbj"/>
+                <constraint firstItem="IFj-St-u0R" firstAttribute="centerX" secondItem="HlD-03-IDL" secondAttribute="centerX" id="W6n-ZA-0p3"/>
+                <constraint firstItem="EDo-w9-a0y" firstAttribute="width" secondItem="HlD-03-IDL" secondAttribute="width" id="WqW-uk-Yj6"/>
+                <constraint firstItem="EDo-w9-a0y" firstAttribute="height" secondItem="HlD-03-IDL" secondAttribute="height" id="YTG-gx-4rz"/>
+                <constraint firstItem="HlD-03-IDL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="aml-Wf-2zh"/>
+                <constraint firstItem="cpr-yc-EkZ" firstAttribute="centerX" secondItem="HlD-03-IDL" secondAttribute="centerX" id="ka7-Ks-iSG"/>
+                <constraint firstAttribute="trailing" secondItem="HlD-03-IDL" secondAttribute="trailing" constant="20" id="kjK-9T-Hcm"/>
+                <constraint firstItem="EDo-w9-a0y" firstAttribute="centerX" secondItem="HlD-03-IDL" secondAttribute="centerX" id="mFa-DS-kzO"/>
+                <constraint firstItem="IFj-St-u0R" firstAttribute="width" secondItem="HlD-03-IDL" secondAttribute="width" id="oVf-dR-XjB"/>
+                <constraint firstItem="Dr4-Ue-HpI" firstAttribute="height" secondItem="HlD-03-IDL" secondAttribute="height" id="rlo-tC-CTj"/>
+                <constraint firstItem="IFj-St-u0R" firstAttribute="top" secondItem="HlD-03-IDL" secondAttribute="bottom" constant="20" id="xaa-pN-eAq"/>
+                <constraint firstItem="cpr-yc-EkZ" firstAttribute="height" secondItem="HlD-03-IDL" secondAttribute="height" id="yc7-DW-DVX"/>
+                <constraint firstItem="EDo-w9-a0y" firstAttribute="top" secondItem="cpr-yc-EkZ" secondAttribute="bottom" constant="20" id="yca-Qi-Uwk"/>
+            </constraints>
+            <point key="canvasLocation" x="352.5" y="62.5"/>
+        </view>
+    </objects>
+</document>
