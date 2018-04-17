@@ -43,6 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readonly) NSDictionary *mapInfoDict;
 /// 用于跳转web页面的baseViewController
 @property (nonatomic, copy) NSString *baseWebClassName;
+/// 限制跳转的规则
 @property (nonatomic, copy) BOOL(^filter)(NSDictionary *params);
 
 @end

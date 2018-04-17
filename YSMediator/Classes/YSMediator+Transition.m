@@ -253,6 +253,14 @@ transitioningDelegate:(id<UIViewControllerTransitioningDelegate>)delegate
 }
 
 
+#pragma mark - Dismiss
+
++ (void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^ __nullable)(void))completion {
+    UIViewController *from = [self topViewController];
+    [from.navigationController dismissViewControllerAnimated:flag completion:completion];
+}
+
+
 #pragma mark - Other
 
 + (void)searchMapInfoWithName:(NSString *)name

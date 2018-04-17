@@ -114,6 +114,7 @@ static const void *ys_urlHostKey = "ys_urlHostKey";
         BOOL b = [self tryToOpenInWebView:urlStr withFilter:filter];
         if (b) return;
         
+        NSLog(@"========>  没有找到映射跳转的路径!!!, 请检查是否有添加映射!!!  <========");
         failureHandler();
     }];
 }
@@ -189,7 +190,6 @@ static const void *ys_urlHostKey = "ys_urlHostKey";
     if (!map
         || map.mapClassName == nil
         || NSClassFromString(map.mapClassName) == nil) {
-        NSLog(@"========>  没有找到映射跳转的路径!!!, 请检查是否有添加映射  <========");
         
         if (failureHandler) {
             failureHandler();
@@ -200,57 +200,7 @@ static const void *ys_urlHostKey = "ys_urlHostKey";
     if (successHandler) {
         successHandler(map);
     }
-    
-/*
-    不再支持openURL的方式通过传入map字段来跳转页面
- */
-//    [self searchMapModelWithURLPath:path result:^(YSMapModel *map) {
-//        if (!map) {
-//            NSLog(@"========>  没有找到映射跳转的路径!!!, 请检查是否有添加映射  <========");
-//            if (failureHandler) {
-//                failureHandler();
-//            }
-//            return;
-//        }
-//
-//        NSString *clazzName = map.mapClassName;
-//        if (clazzName == nil || NSClassFromString(clazzName) == nil) {
-//            NSLog(@"========>  没有找到映射的控制器!!!, 请检查是否有添加映射  <========");
-//            if (failureHandler) {
-//                failureHandler();
-//            }
-//            return;
-//        }
-//
-//        if (successHandler) {
-//            successHandler(clazzName, map);
-//        }
-//    }];
 }
-
-//+ (void)searchMapModelWithURLPath:(NSString *)path result:(void(^)(YSMapModel *map))result {
-//    __block YSMapModel *map = [[YSMediator shareMediator].mapDataCache objectForKey:path];
-//
-//    // 检查是否是映射字符
-//    // 检查是否是类名字符
-//    if (!map) map = [[YSMediator shareMediator].mapDataCache objectForKey:[NSString stringWithFormat:@"/%@", path]];
-//    if (map) {}
-//    else if (NSClassFromString(path)) {
-//        [[YSMediator shareMediator].mapDataCache enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, YSMapModel * _Nonnull obj, BOOL * _Nonnull stop) {
-//            @autoreleasepool {
-//                if ([obj.mapClassName isEqualToString:path]) {
-//                    map = obj;
-//                    *stop = YES;
-//                }
-//            }
-//        }];
-//    }
-//
-//    if (result) {
-//        result(map);
-//    }
-//}
-
 
 + (NSDictionary *)paramsDictWithURL:(NSURL *)url {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];

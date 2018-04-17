@@ -72,6 +72,15 @@
  */
 + (void)popToViewControllerName:(NSString *)vcName animated:(BOOL)flag;
 
+/**
+ dismiss控制器
+
+ @param flag 是否显示动画
+ @param completion 完成后回调
+ */
++ (void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^ __nullable)(void))completion;
+
+/// 当前页面最顶端的控制器
 + (UIViewController *)topViewController;
 
 @end

@@ -14,9 +14,11 @@
                      mapClassName:(NSString *)mapClassName
                     paramsMapDict:(NSDictionary *)paramsMapDict {
     YSMapModel *model = [[self alloc] init];
+   
     model.pathName = pathName;
     model.mapClassName = mapClassName;
     model.paramsMapDict = paramsMapDict;
+    
     return model;
 }
 

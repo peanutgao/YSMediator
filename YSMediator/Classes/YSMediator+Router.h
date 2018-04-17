@@ -30,13 +30,18 @@
  */
 + (void)registerScheme:(NSString *)scheme andHost:(NSString *)host;
 
-
-+ (void)openURL:(NSString *)urlStr;
 /**
- 打开跳转链接
+ 打开跳转链接,如果是http或者https,会直接打开注册的baseWebView,
+ 如果urlStr是注册的scheme,会尝试打开原生注册的页面
+ */
++ (void)openURL:(NSString *)urlStr;
+
+/**
+ 打开跳转链接,如果是http或者https,会直接打开注册的baseWebView,
+ 如果urlStr是注册的scheme,会尝试打开原生注册的页面
 
  @param urlStr 映射的url字段
- @param filter 限制跳转的规则
+ @param filter 限制跳转的规则,params是解析出来的参数字典,可根据字段检查是否允许打开页面
  */
 + (void)openURL:(NSString *)urlStr withFilter:(BOOL(^)(NSDictionary *params))filter;
 
@@ -44,7 +49,7 @@
 /**
  通过映射字符串跳转页面
 
- @param path 映射的路径, 不能为空
+ @param path 映射的路径的字符串, 不能为空
  @param params 映射的参数字典, @{映射的字段: 当前参数}
  */
 + (void)openPath:(NSString *)path withParams:(NSDictionary *)params;
