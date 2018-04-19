@@ -13,10 +13,13 @@
 
 /**
  调用`实例`方法:
- 列:
+ @remark列:
+ @code
  NSString *name = @"Hello World";
  id result = [YSMediator performTarget:@"WDTestViewController" doInstanceAction:@"printInfoWithAge:andName:" withObjects:[NSNull null], name, nil];
- 注意:
+ @endcode
+ 
+ @warning注意:
  1. 不支持C基本类型;
  2. 可变参数结尾一定要有nil;
  3. 如果传递的参数中有nil时, 参数用 [NSNull null]
@@ -30,10 +33,14 @@
 
 /**
  调用`类`方法:
- 列:
+ 
+ @remark列:
+ @code
  NSString *name = @"Hello World";
  id result = [YSMediator performTarget:@"WDTestViewController" doInstanceAction:@"printInfoWithAge:andName:" withObjects:[NSNull null], name, nil];
- 注意:
+ @endcode
+ 
+ @warning 注意:
  1. 不支持C基本类型;
  2. 可变参数结尾一定要有nil;
  3. 如果传递的参数中有nil时, 参数用 [NSNull null]

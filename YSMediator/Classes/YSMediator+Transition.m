@@ -11,7 +11,7 @@
 #import "YSMapModel.h"
 
 typedef NS_ENUM(NSInteger, YSMediatorShowType) {
-    YSMediatorShowTypePush,
+    YSMediatorShowTypePush, 
     YSMediatorShowTypePresent
 };
 
