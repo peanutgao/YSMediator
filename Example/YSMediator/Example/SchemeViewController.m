@@ -10,6 +10,8 @@
 
 @interface SchemeViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *infoLabel;
+
 @end
 
 @implementation SchemeViewController
@@ -24,15 +26,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSLog(@"----%@", self.mid);
+    self.infoLabel.text = [NSString stringWithFormat:@"mid: %@", self.mid];
 }
 
 - (IBAction)OpenWithMapString:(id)sender {
-    [YSMediator openURL:@"com.ysmediator.test:///schemeDemoPage?id=88888&name=Test"];
+    NSString *urlStr = [NSString stringWithFormat:@"com.ysmediator.test:///schemeDemoPage?id=%d&name=MapTest", arc4random_uniform(100)];
+    [YSMediator openURL:urlStr withFilter:^BOOL(NSDictionary *params) {
+        NSInteger mid = [params[@"id"] intValue];
+        if (mid < 50) {
+            NSLog(@"mid: %zd, 不满足条件,不允许跳转", mid);
+            return NO;
+        }
+        return YES;
+    }];
 }
 
 - (IBAction)openLink:(id)sender {
-    [YSMediator openURL:@"https://www.baidu.com"];
+    NSString *urlStr = @"https://www.baidu.com";
+    [YSMediator openURL:urlStr];
+}
+- (IBAction)popToRoot:(id)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end

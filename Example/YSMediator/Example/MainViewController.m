@@ -25,9 +25,12 @@
                                 callBack:NULL];
     }
     else if (indexPath.row == 1) {
-        [YSMediator pushToViewController:@"schemeDemoPage" withParams:@{@"title": @"Scheme Demo"} animated:YES callBack:^{
-            NSLog(@"push finish");
-        }];
+        [YSMediator pushToViewController:@"schemeDemoPage"
+                              withParams:@{@"title": @"Scheme Demo"}
+                                animated:YES
+                                callBack:^{
+                                    NSLog(@"push finish");
+                                }];
     }
 }
 

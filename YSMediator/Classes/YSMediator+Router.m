@@ -70,19 +70,18 @@ static const void *ys_urlHostKey = "ys_urlHostKey";
     if (isEmptyString(path)) {
         YSMediatorAssert(@"path不能为空!!!"); return;
     }
-    
-    [self searchPathInfo:path successHandle:^(YSMapModel *obj) {
+    [self searchPathInfo:path successHandler:^(YSMapModel *obj) {
         [YSMediator pushToViewController:obj.mapClassName
                               withParams:obj.paramsMapDict
                                 animated:YES callBack:NULL];
         
-    } failureHandle:^{
-        
+    } failureHandler:^(NSError *error){
+        YSMediatorAssert(error.localizedDescription);
     }];
 }
 
 + (void)openURL:(NSString *)urlStr {
-    [self openURL:urlStr withFilter:[YSMediator shareMediator].filter ?:NULL];
+    [self openURL:urlStr withFilter:[YSMediator shareMediator].filter ?: NULL];
 }
 
 + (void)openURL:(NSString *)urlStr withFilter:(BOOL(^)(NSDictionary *params))filter {
@@ -102,20 +101,17 @@ static const void *ys_urlHostKey = "ys_urlHostKey";
               [YSMediator shareMediator].urlHost);
     };
     
-    [self searchPathInfo:url.path successHandle:^(YSMapModel *obj) {
+    [self searchPathInfo:url.path successHandler:^(YSMapModel *obj) {
         NSString *urlHost = [YSMediator shareMediator].urlHost;
-        if ((urlHost && ![url.host isEqualToString:urlHost]) || (![url.scheme isEqualToString:[YSMediator shareMediator].urlScheme])) {
+        if ((urlHost && ![url.host isEqualToString:urlHost])
+            || (![url.scheme isEqualToString:[YSMediator shareMediator].urlScheme])) {
             failureHandler();
         }
         
         [self openInNativePageOfURL:url withMapObj:obj andFilter:filter];
         
-    } failureHandle:^{
-        BOOL b = [self tryToOpenInWebView:urlStr withFilter:filter];
-        if (b) return;
-        
-        NSLog(@"========>  没有找到映射跳转的路径!!!, 请检查是否有添加映射!!!  <========");
-        failureHandler();
+    } failureHandler:^(NSError *error){
+        YSMediatorAssert(error.localizedDescription);
     }];
 }
 
@@ -156,6 +152,7 @@ static const void *ys_urlHostKey = "ys_urlHostKey";
         
         return YES;
     }
+    
     return NO;
 }
 
@@ -177,22 +174,26 @@ static const void *ys_urlHostKey = "ys_urlHostKey";
         NSDictionary *mapParams = [self fixParams:params withMapDict:obj.paramsMapDict];
         id obj = [[Clazz alloc] init];
         [self setPropretyOfTarget:obj withParams:mapParams handle:NULL];
-        return;
     }
     
 }
 
 + (void)searchPathInfo:(NSString *)path
-        successHandle:(void(^)(YSMapModel *obj))successHandler
-           failureHandle:(void(^)(void))failureHandler {
+        successHandler:(void(^)(YSMapModel *obj))successHandler
+        failureHandler:(void(^)(NSError *error))failureHandler {
 
     YSMapModel *map = [[YSMediator shareMediator].mapInfoDict objectForKey:path];
     if (!map
         || map.mapClassName == nil
         || NSClassFromString(map.mapClassName) == nil) {
         
+        NSString *errorStr = @"没有找到当前类型的控制器类, 请检查是否有添加映射";
+        NSError *error = [NSError errorWithDomain:YS_MEDIATOR_ERROR_DOMAIN
+                                             code:YS_MEDIATOR_MAP_ERROR_CODE
+                                         userInfo:@{NSLocalizedDescriptionKey: errorStr}];
+        
         if (failureHandler) {
-            failureHandler();
+            failureHandler(error);
         }
         return;
     }

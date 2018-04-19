@@ -74,11 +74,10 @@ isAsBaseWebView:(BOOL)isBaseWebView
         YSMediatorAssert(@"映射的类名错误!!!") return NO;
     }
     
-    NSString *path = [NSString stringWithFormat:@"/%@", name];
-    YSMapModel *mapData = [YSMapModel modelWithPathName:path
+    YSMapModel *mapData = [YSMapModel modelWithMapName:name
                                            mapClassName:toClassName
                                           paramsMapDict: paramsMapDict];
-    [[YSMediator shareMediator].mapInfoDictM setObject:mapData forKey:path];
+    [[YSMediator shareMediator].mapInfoDictM setObject:mapData forKey:mapData.pathName];
     [YSMediator shareMediator]->_mapInfoDict = [YSMediator shareMediator].mapInfoDictM.copy;
     if (isBaseWebView) [YSMediator shareMediator]->_baseWebClassName = mapData.mapClassName;
     

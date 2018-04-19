@@ -10,12 +10,13 @@
 
 @implementation YSMapModel
 
-+ (instancetype)modelWithPathName:(NSString *)pathName
++ (instancetype)modelWithMapName:(NSString *)mapName
                      mapClassName:(NSString *)mapClassName
                     paramsMapDict:(NSDictionary *)paramsMapDict {
     YSMapModel *model = [[self alloc] init];
    
-    model.pathName = pathName;
+    model.mapName = mapName;
+    model.pathName = [NSString stringWithFormat:@"/%@", mapName];
     model.mapClassName = mapClassName;
     model.paramsMapDict = paramsMapDict;
     

@@ -11,11 +11,14 @@
 #define YSMediatorAssert(desc) {\
             NSLog(@"\n\n\
                     ============================\n\
-                    !!!!!! %@ !!!!!!\n\
+           !!!!!! %@ !!!!!!\n\
                     ============================\n\
                     ", desc);\
             NSAssert(NO, desc);\
         }
+
+#define YS_MEDIATOR_ERROR_DOMAIN @"com.ysmediator.error"
+#define YS_MEDIATOR_MAP_ERROR_CODE 1900
 
 NS_ASSUME_NONNULL_BEGIN
 

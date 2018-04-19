@@ -140,15 +140,16 @@ static const char *getPropertyType(objc_property_t property) {
 
 
 + (NSDictionary *)fixParams:(NSDictionary *)params withMapDict:(NSDictionary *)mapDict {
-    if (!params || [params isEqual:[NSNull null]]) nil;
+    if (!params || [params isEqual:[NSNull null]]) return nil;
     if (!mapDict || [mapDict isEqual:[NSNull null]]) return params;
     
     NSMutableDictionary *result = [NSMutableDictionary dictionaryWithCapacity:params.count];
     [params enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         @autoreleasepool {
+            NSString *k = key;
             NSString *mapKey = [mapDict valueForKey:key];
-            if (!mapKey) mapKey = key;
-            [result setObject:obj forKey:mapKey];
+            if (mapKey) k = mapKey;
+            [result setObject:obj forKey:k];
         }
     }];
     

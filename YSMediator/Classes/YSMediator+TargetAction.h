@@ -26,9 +26,7 @@
  @param obj1 可变参数,注意: 1. 不支持C基本类型, 2. 可变参数结尾一定要有nil; 3. 如果传递的参数中有nil时, 参数用 [NSNull null]
  @return 返回值
  */
-+ (id)performTarget:(NSString *)targetClass
-     doInstanceAction:(NSString *)aSelector
-        withObjects:(id)obj1,...;
++ (id)performTarget:(NSString *)targetClass doInstanceAction:(NSString *)aSelector withObjects:(id)obj1,...;
 
 /**
  调用`类`方法:
@@ -45,8 +43,6 @@
  @param obj1 可变参数,注意: 1. 不支持C基本类型, 2. 可变参数结尾一定要有nil; 3. 如果传递的参数中有nil时, 参数用 [NSNull null]
  @return 返回值
  */
-+ (id)performTarget:(NSString *)targetClass
-      doClassAction:(NSString *)aSelector
-            withObjects:(id)obj1,...;
++ (id)performTarget:(NSString *)targetClass doClassAction:(NSString *)aSelector withObjects:(id)obj1,...;
 
 @end

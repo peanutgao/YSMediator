@@ -28,15 +28,11 @@ typedef NS_ENUM(NSInteger, YSMediatorShowType) {
     if (vcString == nil) {
         YSMediatorAssert(@"跳转的控制器名不能为空"); return;
     }
-    
-    [self searchMapInfoWithName:vcString params:params result:^(NSString *vcClass, NSDictionary *fixedParams) {
-        [self jumpToTargetWithClassName:vcClass
-                                 params:fixedParams
-                               animated:flag
-                               showType:YSMediatorShowTypePush
-                  transitioningDelegate:nil
-                               callBack:callBack];
-    }];
+    [self jumpToTargetWithVCString:vcString
+                            params:params
+                          animated:flag
+                          showType:YSMediatorShowTypePush
+                          callBack:callBack];
 }
 
 + (void)pushViewController:(__kindof UIViewController *)vc
@@ -47,7 +43,6 @@ typedef NS_ENUM(NSInteger, YSMediatorShowType) {
               withParams:params
                 animated:flag
                 showType:YSMediatorShowTypePush
-   transitioningDelegate:nil
                 callBack:callBack];
 }
 
@@ -61,15 +56,12 @@ typedef NS_ENUM(NSInteger, YSMediatorShowType) {
     if (vcString == nil) {
         YSMediatorAssert(@"跳转的控制器名不能为空"); return;
     }
-    
-    [self searchMapInfoWithName:vcString params:params result:^(NSString *vcClass, NSDictionary *fixedParams) {
-        [self jumpToTargetWithClassName:vcClass
-                                 params:fixedParams
-                               animated:flag
-                               showType:YSMediatorShowTypePresent
-                  transitioningDelegate:nil
-                               callBack:callBack];
-    }];
+
+    [self jumpToTargetWithVCString:vcString
+                             params:params
+                           animated:flag
+                           showType:YSMediatorShowTypePresent
+                           callBack:callBack];
 }
 
 + (void)presentViewController:(__kindof UIViewController *)vc
@@ -80,53 +72,39 @@ typedef NS_ENUM(NSInteger, YSMediatorShowType) {
                withParams:params
                  animated:flag
                  showType:YSMediatorShowTypePresent
-    transitioningDelegate:nil
                  callBack:callBack];
 }
 
-
-+ (void)jumpToTargetWithClassName:(NSString *)tCName
++ (void)jumpToTargetWithVCString:(NSString *)vcString
                            params:(NSDictionary *)params
                          animated:(BOOL)flag
                          showType:(YSMediatorShowType)showType
-            transitioningDelegate:(id<UIViewControllerTransitioningDelegate>)delegate
                          callBack:(void(^)(void))callBack {
-    if (tCName == nil) {
-        YSMediatorAssert(@"跳转的控制器名不能为空"); return;
-    }
-    
-    Class Clazz = NSClassFromString(tCName);
-    if (Clazz == nil || ![Clazz isSubclassOfClass:[UIViewController class]]) {
-        NSLog(@"========>  没有找到当前类型的控制器类!!!, 请检查是否有添加映射  <========");
-        return;
-    }
-    
-    UIViewController *targetVC = [[Clazz alloc] init];
-    [self jumpToTargetVC:targetVC
-              withParams:params
-                animated:flag
-                showType:showType
-   transitioningDelegate:delegate
-                callBack:callBack];
+    [self searchMapInfoWithName:vcString params:params result:^(NSString *vcClass, NSDictionary *fixedParams, NSError *error) {
+        if (error) return;
+        
+        UIViewController *targetVC = [[NSClassFromString(vcClass) alloc] init];
+        [self jumpToTargetVC:targetVC
+                  withParams:fixedParams
+                    animated:flag
+                    showType:showType
+                    callBack:callBack];
+    }];
 }
-
+     
 + (void)jumpToTargetVC:(__kindof UIViewController *)targetVC
             withParams:(NSDictionary *)params
                 animated:(BOOL)flag
               showType:(YSMediatorShowType)showType
-transitioningDelegate:(id<UIViewControllerTransitioningDelegate>)delegate
                     callBack:(void(^)(void))callBack {
-    
-    // 属性赋值
     [self setPropretyOfTarget:targetVC withParams:params handle:^(UIViewController *targetVC) {
         UIViewController *from = [self topViewController];
         
-        // 跳转
         switch (showType) {
             case YSMediatorShowTypePush: {
                 UINavigationController *nav = from.navigationController;
                 if (!nav) {
-                    NSString *str = [NSString stringWithFormat:@"控制器: %@ 没有 NavigationController", from];
+                    NSString *str = [NSString stringWithFormat:@"控制器:%@ 没有导航控制器", from];
                     YSMediatorAssert(str);
                     return;
                 }
@@ -139,15 +117,6 @@ transitioningDelegate:(id<UIViewControllerTransitioningDelegate>)delegate
                 break;
             }
             case YSMediatorShowTypePresent: {
-                if (delegate) {
-                    if ([delegate conformsToProtocol:@protocol(UIViewControllerTransitioningDelegate)]) {
-                        targetVC.transitioningDelegate = delegate;
-                        targetVC.modalPresentationStyle = UIModalPresentationCustom;
-                    }
-                    else {
-                        YSMediatorAssert(@"自定义转场动画代理需要遵守UIViewControllerTransitioningDelegate协议");
-                    }
-                }
                 if (from.presentedViewController) {
                     [from dismissViewControllerAnimated:NO completion:^{
                         [from presentViewController:targetVC animated:YES completion:callBack];
@@ -188,10 +157,9 @@ transitioningDelegate:(id<UIViewControllerTransitioningDelegate>)delegate
 
 + (void)popToViewControllerName:(NSString *)vcName animated:(BOOL)flag {
     if (vcName ==  nil) {
-        YSMediatorAssert(@"返回的控制器名不能为空"); return;
+        YSMediatorAssert(@"返回的控制器名不能为空!!!"); return;
     }
     
-
     Class clazz = NSClassFromString(vcName);
     if (clazz) {
         [self popToViewControllerByVCClass:clazz animated:flag];
@@ -242,7 +210,10 @@ transitioningDelegate:(id<UIViewControllerTransitioningDelegate>)delegate
         }
     }
     
-    NSLog(@"=========> 堆栈中没有找到要返回的控制器!!! <==========");
+    NSLog(@"=====================================");
+    NSLog(@"============> Warning <============");
+    NSLog(@"    堆栈中没有找到要返回的控制器!!!");
+    NSLog(@"=====================================");
 }
 
 + (Class)mapClassByName:(NSString *)name {
@@ -264,29 +235,45 @@ transitioningDelegate:(id<UIViewControllerTransitioningDelegate>)delegate
 #pragma mark - Other
 
 + (void)searchMapInfoWithName:(NSString *)name
-                      params:(NSDictionary *)params
-                       result:(void(^)(NSString *vcClass, NSDictionary *fixedParams))result {
+                       params:(NSDictionary *)params
+                       result:(void(^)(NSString *vcClass, NSDictionary *fixedParams, NSError *error))result {
     YSMapModel *map = [self mapModelWithName:name];
     NSDictionary *fixedParams = params;
     NSString *vcName = name;
     if (map) {
         vcName = map.mapClassName;
         if (map.paramsMapDict) {
-            fixedParams = [self fixParams:params withMapDict:fixedParams];
+            fixedParams = [self fixParams:params withMapDict:map.paramsMapDict];
         }
     }
+
+    if ([self checkIsViewController:vcName]) {
+        if (result) {
+            result(vcName, fixedParams, nil);
+        }
+        return;
+    }
     
+    NSString *errorStr = @"没有找到当前类型的控制器类, 请检查是否有添加映射";
+    YSMediatorAssert(errorStr);
+        
     if (result) {
-        result(vcName, fixedParams);
+        NSError *error = [NSError errorWithDomain:YS_MEDIATOR_ERROR_DOMAIN
+                                             code:YS_MEDIATOR_MAP_ERROR_CODE
+                                         userInfo:@{NSLocalizedDescriptionKey: errorStr}];
+        result(vcName, fixedParams, error);
     }
 }
 
-+ (YSMapModel *)mapModelWithName:(NSString *)name {
-    __block YSMapModel *result = nil;
++ (BOOL)checkIsViewController:(NSString *)name {
+    Class Clazz = NSClassFromString(name);
+    return !(Clazz == nil || ![Clazz isSubclassOfClass:[UIViewController class]]);
+}
 
-    result = [[YSMediator shareMediator].mapInfoDict objectForKey:[NSString stringWithFormat:@"/%@", name]];
-    if (result) return result;
++ (YSMapModel *)mapModelWithName:(NSString *)name {
+    __block YSMapModel *result = [self searchMapInfoDictWithPath:[NSString stringWithFormat:@"/%@", name]];
     
+    if (result) return result;
     if (NSClassFromString(name)) {
         [[YSMediator shareMediator].mapInfoDict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, YSMapModel * _Nonnull obj, BOOL * _Nonnull stop) {
             @autoreleasepool {
@@ -299,6 +286,10 @@ transitioningDelegate:(id<UIViewControllerTransitioningDelegate>)delegate
     }
     
     return result;
+}
+
++ (YSMapModel *)searchMapInfoDictWithPath:(NSString *)path {
+    return [[YSMediator shareMediator].mapInfoDict objectForKey:path];
 }
 
 @end

@@ -17,9 +17,7 @@ typedef NS_ENUM(NSInteger, MediatorMethodType) {
 
 @implementation YSMediator (TargetAction)
 
-+ (id)performTarget:(NSString *)targetClass
-   doInstanceAction:(NSString *)aSelector
-        withObjects:(id)obj1,... {
++ (id)performTarget:(NSString *)targetClass doInstanceAction:(NSString *)aSelector withObjects:(id)obj1,... {
     NSMutableArray *objs = [NSMutableArray array];
     if (obj1) {
         va_list arg_list;
@@ -37,9 +35,7 @@ typedef NS_ENUM(NSInteger, MediatorMethodType) {
                    withObjects:objs];
 }
 
-+ (id)performTarget:(NSString *)targetClass
-      doClassAction:(NSString *)aSelector
-        withObjects:(id)obj1,... {
++ (id)performTarget:(NSString *)targetClass doClassAction:(NSString *)aSelector withObjects:(id)obj1,... {
     NSMutableArray *objs = [NSMutableArray array];
     if (obj1) {
         va_list arg_list;
@@ -62,6 +58,7 @@ typedef NS_ENUM(NSInteger, MediatorMethodType) {
              doAction:(NSString *)aSelector
            methodType:(MediatorMethodType)methodType
         withObjects:(NSArray *)arguments {
+    
     if (isEmptyString(targetClass) || isEmptyString(aSelector)) {
         YSMediatorAssert(@"====> !!! Error: targetClass or aSelector is Empty !!!"); return nil;
     }

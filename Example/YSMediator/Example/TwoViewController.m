@@ -11,6 +11,8 @@
 
 @interface TwoViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *infoLabel;
+
 @end
 
 @implementation TwoViewController
