@@ -20,21 +20,17 @@
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
+		7C9C80172089B4AB00D6E42D /* LocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9C80152089B4AB00D6E42D /* LocalViewController.m */; };
+		7C9C80182089B4AB00D6E42D /* LocalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C9C80162089B4AB00D6E42D /* LocalViewController.xib */; };
+		7C9C801C2089B9CD00D6E42D /* YSPresentedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C9C801A2089B9CD00D6E42D /* YSPresentedViewController.m */; };
+		7C9C801D2089B9CD00D6E42D /* YSPresentedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C9C801B2089B9CD00D6E42D /* YSPresentedViewController.xib */; };
 		7CBACC7C207C659F0022AA5A /* YSMediator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CBACC7B207C659F0022AA5A /* YSMediator.framework */; };
 		7CBACCBE207C69F30022AA5A /* BaseWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBACCB0207C69F30022AA5A /* BaseWebViewController.m */; };
 		7CBACCBF207C69F30022AA5A /* BaseWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBACCB0207C69F30022AA5A /* BaseWebViewController.m */; };
 		7CBACCC0207C69F30022AA5A /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CBACCB1207C69F30022AA5A /* MainViewController.storyboard */; };
 		7CBACCC1207C69F30022AA5A /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CBACCB1207C69F30022AA5A /* MainViewController.storyboard */; };
-		7CBACCC2207C69F30022AA5A /* OneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBACCB3207C69F30022AA5A /* OneViewController.m */; };
-		7CBACCC3207C69F30022AA5A /* OneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBACCB3207C69F30022AA5A /* OneViewController.m */; };
-		7CBACCC4207C69F30022AA5A /* TwoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CBACCB4207C69F30022AA5A /* TwoViewController.xib */; };
-		7CBACCC5207C69F30022AA5A /* TwoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CBACCB4207C69F30022AA5A /* TwoViewController.xib */; };
-		7CBACCC6207C69F30022AA5A /* TwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBACCB5207C69F30022AA5A /* TwoViewController.m */; };
-		7CBACCC7207C69F30022AA5A /* TwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBACCB5207C69F30022AA5A /* TwoViewController.m */; };
 		7CBACCC8207C69F30022AA5A /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBACCB6207C69F30022AA5A /* MainViewController.m */; };
 		7CBACCC9207C69F30022AA5A /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBACCB6207C69F30022AA5A /* MainViewController.m */; };
-		7CBACCCA207C69F30022AA5A /* OneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CBACCB9207C69F30022AA5A /* OneViewController.xib */; };
-		7CBACCCB207C69F30022AA5A /* OneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CBACCB9207C69F30022AA5A /* OneViewController.xib */; };
 		7CBACCCC207C69F30022AA5A /* SchemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBACCBA207C69F30022AA5A /* SchemeViewController.m */; };
 		7CBACCCD207C69F30022AA5A /* SchemeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CBACCBA207C69F30022AA5A /* SchemeViewController.m */; };
 		7CBACCCE207C69F30022AA5A /* SchemeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CBACCBB207C69F30022AA5A /* SchemeViewController.xib */; };
@@ -79,21 +75,21 @@
 		6E98C2186CA1D779518C2FE4 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7C3EEBD5207C63C700A7CFA3 /* YSMediator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YSMediator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C9C80142089B4AB00D6E42D /* LocalViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocalViewController.h; sourceTree = "<group>"; };
+		7C9C80152089B4AB00D6E42D /* LocalViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocalViewController.m; sourceTree = "<group>"; };
+		7C9C80162089B4AB00D6E42D /* LocalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocalViewController.xib; sourceTree = "<group>"; };
+		7C9C80192089B9CD00D6E42D /* YSPresentedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YSPresentedViewController.h; sourceTree = "<group>"; };
+		7C9C801A2089B9CD00D6E42D /* YSPresentedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YSPresentedViewController.m; sourceTree = "<group>"; };
+		7C9C801B2089B9CD00D6E42D /* YSPresentedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YSPresentedViewController.xib; sourceTree = "<group>"; };
 		7CBACC7B207C659F0022AA5A /* YSMediator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = YSMediator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CBACCB0207C69F30022AA5A /* BaseWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseWebViewController.m; sourceTree = "<group>"; };
 		7CBACCB1207C69F30022AA5A /* MainViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainViewController.storyboard; sourceTree = "<group>"; };
 		7CBACCB2207C69F30022AA5A /* SchemeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchemeViewController.h; sourceTree = "<group>"; };
-		7CBACCB3207C69F30022AA5A /* OneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneViewController.m; sourceTree = "<group>"; };
-		7CBACCB4207C69F30022AA5A /* TwoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TwoViewController.xib; sourceTree = "<group>"; };
-		7CBACCB5207C69F30022AA5A /* TwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoViewController.m; sourceTree = "<group>"; };
 		7CBACCB6207C69F30022AA5A /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		7CBACCB7207C69F30022AA5A /* BaseWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseWebViewController.h; sourceTree = "<group>"; };
-		7CBACCB8207C69F30022AA5A /* OneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneViewController.h; sourceTree = "<group>"; };
-		7CBACCB9207C69F30022AA5A /* OneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OneViewController.xib; sourceTree = "<group>"; };
 		7CBACCBA207C69F30022AA5A /* SchemeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchemeViewController.m; sourceTree = "<group>"; };
 		7CBACCBB207C69F30022AA5A /* SchemeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchemeViewController.xib; sourceTree = "<group>"; };
 		7CBACCBC207C69F30022AA5A /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
-		7CBACCBD207C69F30022AA5A /* TwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoViewController.h; sourceTree = "<group>"; };
 		7CCBCDC70F4F39BEF1406759 /* Pods-YSMediator_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YSMediator_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-YSMediator_Example/Pods-YSMediator_Example.release.xcconfig"; sourceTree = "<group>"; };
 		C519E6112BC4A4DFF02E75FD /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		CC72188404600EF3E978CBB4 /* YSMediator.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = YSMediator.podspec; path = ../YSMediator.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -227,23 +223,39 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		7CBACCAF207C69F30022AA5A /* Example */ = {
+		7C9C80122089B42B00D6E42D /* Local */ = {
 			isa = PBXGroup;
 			children = (
-				7CBACCBC207C69F30022AA5A /* MainViewController.h */,
-				7CBACCB6207C69F30022AA5A /* MainViewController.m */,
+				7C9C80142089B4AB00D6E42D /* LocalViewController.h */,
+				7C9C80152089B4AB00D6E42D /* LocalViewController.m */,
+				7C9C80162089B4AB00D6E42D /* LocalViewController.xib */,
+				7C9C80192089B9CD00D6E42D /* YSPresentedViewController.h */,
+				7C9C801A2089B9CD00D6E42D /* YSPresentedViewController.m */,
+				7C9C801B2089B9CD00D6E42D /* YSPresentedViewController.xib */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		7C9C80132089B43300D6E42D /* URL */ = {
+			isa = PBXGroup;
+			children = (
 				7CBACCB7207C69F30022AA5A /* BaseWebViewController.h */,
 				7CBACCB0207C69F30022AA5A /* BaseWebViewController.m */,
-				7CBACCB1207C69F30022AA5A /* MainViewController.storyboard */,
-				7CBACCB8207C69F30022AA5A /* OneViewController.h */,
-				7CBACCB3207C69F30022AA5A /* OneViewController.m */,
-				7CBACCB9207C69F30022AA5A /* OneViewController.xib */,
-				7CBACCBD207C69F30022AA5A /* TwoViewController.h */,
-				7CBACCB5207C69F30022AA5A /* TwoViewController.m */,
-				7CBACCB4207C69F30022AA5A /* TwoViewController.xib */,
 				7CBACCB2207C69F30022AA5A /* SchemeViewController.h */,
 				7CBACCBA207C69F30022AA5A /* SchemeViewController.m */,
 				7CBACCBB207C69F30022AA5A /* SchemeViewController.xib */,
+			);
+			path = URL;
+			sourceTree = "<group>";
+		};
+		7CBACCAF207C69F30022AA5A /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				7C9C80132089B43300D6E42D /* URL */,
+				7C9C80122089B42B00D6E42D /* Local */,
+				7CBACCBC207C69F30022AA5A /* MainViewController.h */,
+				7CBACCB6207C69F30022AA5A /* MainViewController.m */,
+				7CBACCB1207C69F30022AA5A /* MainViewController.storyboard */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -336,10 +348,10 @@
 			files = (
 				7CBACCC0207C69F30022AA5A /* MainViewController.storyboard in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
-				7CBACCC4207C69F30022AA5A /* TwoViewController.xib in Resources */,
+				7C9C80182089B4AB00D6E42D /* LocalViewController.xib in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				7C9C801D2089B9CD00D6E42D /* YSPresentedViewController.xib in Resources */,
 				7CBACCCE207C69F30022AA5A /* SchemeViewController.xib in Resources */,
-				7CBACCCA207C69F30022AA5A /* OneViewController.xib in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,10 +360,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CBACCC5207C69F30022AA5A /* TwoViewController.xib in Resources */,
 				7CBACCC1207C69F30022AA5A /* MainViewController.storyboard in Resources */,
 				6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */,
-				7CBACCCB207C69F30022AA5A /* OneViewController.xib in Resources */,
 				7CBACCCF207C69F30022AA5A /* SchemeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,8 +476,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* YSAppDelegate.m in Sources */,
-				7CBACCC2207C69F30022AA5A /* OneViewController.m in Sources */,
-				7CBACCC6207C69F30022AA5A /* TwoViewController.m in Sources */,
+				7C9C80172089B4AB00D6E42D /* LocalViewController.m in Sources */,
+				7C9C801C2089B9CD00D6E42D /* YSPresentedViewController.m in Sources */,
 				7CBACCC8207C69F30022AA5A /* MainViewController.m in Sources */,
 				7CBACCCC207C69F30022AA5A /* SchemeViewController.m in Sources */,
 				7CBACCBE207C69F30022AA5A /* BaseWebViewController.m in Sources */,
@@ -479,11 +489,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CBACCC3207C69F30022AA5A /* OneViewController.m in Sources */,
 				7CBACCBF207C69F30022AA5A /* BaseWebViewController.m in Sources */,
 				6003F5BC195388D20070C39A /* Tests.m in Sources */,
 				7CBACCC9207C69F30022AA5A /* MainViewController.m in Sources */,
-				7CBACCC7207C69F30022AA5A /* TwoViewController.m in Sources */,
 				7CBACCCD207C69F30022AA5A /* SchemeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

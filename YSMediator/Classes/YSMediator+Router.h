@@ -23,12 +23,27 @@
                  paramsMapDict:(NSDictionary *_Nullable)paramsMapDict;
 
 /**
- 注册Router跳转的URL Scheme 和 Host
+ 注册Router跳转的URL Scheme 和 Host, 用该方式限制唯一的scheme和host
 
  @param scheme 跳转的URL Scheme,不能为空
  @param host 跳转的URL Host
  */
 + (void)registerScheme:(NSString *_Nonnull)scheme andHost:(NSString *_Nullable)host;
+
+/**
+ 注册Router跳转的URL信息
+ key: url的scheme字符串.
+ value: 对应Scheme的host. 如果是单个可以用NSString类型; 如果是多个可以用NSArray<NSString *>类型; 如果是不限制scheme的host的话值设置成 [NSNull null]
+ @code
+ [self registerUrlInfos:@{
+                         @"com.ysmediator.demo1": @"host", // 只能跳转到 com.ysmediator.demo1://host下的页面
+                         @"com.ysmediator.demo2": @[@"host1", @"host2", @"host3"], // 只能跳转到 com.ysmediator.demo2://host1 host2 和 host3下的页面
+                         @"com.ysmediator.demo3": [NSNull null] //可以跳转到 com.ysmediator.demo3://任意host下的页面
+                        }];
+ @endcode
+ @param UrlInfos 所有url的Scheme和host信息,
+ */
++ (void)registerUrlInfos:(NSDictionary *_Nonnull)UrlInfos;
 
 /**
  打开跳转链接,如果是http或者https,会直接打开注册的baseWebView,

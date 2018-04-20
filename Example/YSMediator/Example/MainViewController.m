@@ -16,9 +16,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 0) {
-        [YSMediator pushToViewController:@"OneViewController"
+        [YSMediator pushToViewController:@"LocalViewController"
                               withParams:@{
-                                           @"title": @"oneVC",
+                                           @"title": @"localDemo",
                                            @"idx": @1
                                            }
                                 animated:YES
@@ -26,7 +26,7 @@
     }
     else if (indexPath.row == 1) {
         [YSMediator pushToViewController:@"schemeDemoPage"
-                              withParams:@{@"title": @"Scheme Demo"}
+                              withParams:@{@"title": @"SchemeDemo"}
                                 animated:YES
                                 callBack:^{
                                     NSLog(@"push finish");

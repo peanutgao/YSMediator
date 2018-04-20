@@ -200,7 +200,7 @@ typedef NS_ENUM(NSInteger, YSMediatorShowType) {
     UINavigationController *nav = from.navigationController;
     UIViewController *to = nil;
     
-    for(NSInteger i = nav.viewControllers.count - 1; i >= 0; i--) {
+    for (NSInteger i = 0; i < nav.viewControllers.count; i++) {
         @autoreleasepool {
             to = [nav.viewControllers objectAtIndex:i];
             if ([to isMemberOfClass:clazz]) {
@@ -209,6 +209,16 @@ typedef NS_ENUM(NSInteger, YSMediatorShowType) {
             }
         }
     }
+    
+//    for(NSInteger i = nav.viewControllers.count - 1; i >= 0; i--) {
+//        @autoreleasepool {
+//            to = [nav.viewControllers objectAtIndex:i];
+//            if ([to isMemberOfClass:clazz]) {
+//                [nav popToViewController:to animated:flag];
+//                return;
+//            }
+//        }
+//    }
     
     NSLog(@"\n");
     NSLog(@"=====================================");

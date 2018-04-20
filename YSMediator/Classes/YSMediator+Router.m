@@ -13,47 +13,44 @@
 #import "YSMapModel.h"
 
 static const char *kWebViewURLPropertyKey = "urlString";
-static const void *ys_urlSchemeKey = "ys_urlSchemeKey";
-static const void *ys_urlHostKey = "ys_urlHostKey";
+static const void *ys_registerInfosKey = "ys_registerInfosKey";
 
 @interface YSMediator ()
 
-@property (nonatomic, copy) NSString *urlScheme;
-@property (nonatomic, copy) NSString *urlHost;
+@property (nonatomic, strong) NSDictionary *registerInfos;
 
 @end
 
 
 @implementation YSMediator (Router)
 
-
-- (void)setUrlScheme:(NSString *)urlScheme {
-    objc_setAssociatedObject(self, &ys_urlSchemeKey, urlScheme, OBJC_ASSOCIATION_COPY);
+- (void)setRegisterInfos:(NSDictionary *)registerInfos {
+    objc_setAssociatedObject(self, &ys_registerInfosKey, registerInfos, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (NSString *)urlScheme {
-    return objc_getAssociatedObject(self, &ys_urlSchemeKey);
-}
-
-- (void)setUrlHost:(NSString *)urlHost {
-    objc_setAssociatedObject(self, &ys_urlHostKey, urlHost, OBJC_ASSOCIATION_COPY);
-}
-
-- (NSString *)urlHost {
-    return objc_getAssociatedObject(self, &ys_urlHostKey);
+- (NSDictionary *)registerInfos {
+    return objc_getAssociatedObject(self, &ys_registerInfosKey);
 }
 
 
 #pragma mark - Open
 
 + (void)registerScheme:(NSString *)scheme andHost:(NSString *)host {
-    if (scheme == nil) {
+    if (scheme == nil || ![scheme isKindOfClass:[NSString class]]) {
+        YSMediatorAssert(@"注册信息错误"); return;
+    }
+    
+    YSMediator *instance = [YSMediator shareMediator];
+    instance.registerInfos = @{scheme : host ?: [NSNull null]};
+}
+
++ (void)registerUrlInfos:(NSDictionary <NSString *, NSArray *> *_Nonnull)UrlInfos {
+    if (UrlInfos == nil) {
         YSMediatorAssert(@"注册信息不能为空"); return;
     }
     
     YSMediator *instance = [YSMediator shareMediator];
-    instance.urlScheme = scheme;
-    instance.urlHost = host;
+    instance.registerInfos = UrlInfos;
 }
 
 + (BOOL)mapBaseWebViewWithName:(NSString *_Nonnull)nameString
@@ -90,29 +87,21 @@ static const void *ys_urlHostKey = "ys_urlHostKey";
     }
     
     NSURL *url = [NSURL URLWithString:urlStr];
+    if (![self isLegalUrl:url]) {
+        NSLog(@"\n");
+        NSLog(@"=====================================");
+        NSLog(@"=============> Warning <=============");
+        NSLog(@"    非法URL: 当前注册信息中未包含该URL:");
+        NSLog(@"%@", url);
+        NSLog(@"=====================================\n");
+        NSLog(@"\n");
+        return;
+    }
+    
     BOOL b = [self tryToOpenInWebView:urlStr withFilter:filter];
     if (b) return;
     
-    void(^failureHandler)(void) = ^{
-        NSLog(@"\n");
-        NSLog(@"=====================================");
-        NSLog(@"============> Warning <============");
-        NSLog(@"无法打开URL:\n<当前Scheme: %@, 注册的Scheme: %@>\n<当前Host: %@, 注册的Host: %@>",\
-              url.scheme,\
-              [YSMediator shareMediator].urlScheme,\
-              url.host,\
-              [YSMediator shareMediator].urlHost);
-        NSLog(@"=====================================\n");
-        NSLog(@"\n");
-    };
-    
     [self searchPathInfo:url.path successHandler:^(YSMapModel *obj) {
-        NSString *urlHost = [YSMediator shareMediator].urlHost;
-        if ((urlHost && ![url.host isEqualToString:urlHost])
-            || (![url.scheme isEqualToString:[YSMediator shareMediator].urlScheme])) {
-            failureHandler();
-        }
-        
         [self openInNativePageOfURL:url withMapObj:obj andFilter:filter];
         
     } failureHandler:^(NSError *error){
@@ -120,12 +109,39 @@ static const void *ys_urlHostKey = "ys_urlHostKey";
     }];
 }
 
++ (BOOL)isHttpUrl:(NSURL *)url {
+    return ([url.scheme isEqualToString:@"http"] || [url.scheme isEqualToString:@"https"]);
+}
+
++ (BOOL)isLegalUrl:(NSURL *)url {
+    YSMediator *mediator = [YSMediator shareMediator];
+    NSArray *schemes = mediator.registerInfos.allKeys;
+    
+    if (url.scheme.length == 0) return NO;
+    if ([self isHttpUrl:url] || !mediator.registerInfos) return YES;
+    if (![schemes containsObject:url.scheme]) return NO;
+    
+    id hosts = [mediator.registerInfos objectForKey:url.scheme];
+    if ([hosts isEqual:[NSNull null]]) {
+        return YES;
+    }
+    else if ([hosts isKindOfClass:[NSString class]]) {
+        return [hosts isEqualToString:url.host];
+    }
+    else if ([hosts isKindOfClass:[NSArray class]]) {
+        return [hosts containsObject:url.host];
+    }
+    
+    YSMediatorAssert(@"格式错误: 注册的hosts是 NSString 或者 NSArray 类型");
+    return NO;
+}
+
 
 #pragma mark - Other
 
 + (BOOL)tryToOpenInWebView:(NSString *)urlStr withFilter:(BOOL(^)(NSDictionary *params))filter {
     NSURL *url = [NSURL URLWithString:urlStr];
-    if ([url.scheme isEqualToString:@"http"] || [url.scheme isEqualToString:@"https"]) {
+    if ([self isHttpUrl:url]) {
         if ([YSMediator shareMediator].baseWebClassName.length == 0) {
             YSMediatorAssert(@"没有注册一个baseWeb控制器"); return NO;
         }
