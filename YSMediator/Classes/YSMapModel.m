@@ -18,9 +18,15 @@
     model.mapName = mapName;
     model.pathName = [NSString stringWithFormat:@"/%@", mapName];
     model.mapClassName = mapClassName;
-    model.paramsMapDict = paramsMapDict;
+    model.paramsMapDict = [self swapDictionary:paramsMapDict];
     
     return model;
+}
+
++ (NSDictionary *)swapDictionary:(NSDictionary *)dict {
+    NSArray *keys = dict.allKeys;
+    NSArray *values = [dict objectsForKeys:keys notFoundMarker:[NSNull null]];
+    return [NSDictionary dictionaryWithObjects:keys forKeys:values];
 }
 
 @end

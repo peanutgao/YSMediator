@@ -18,7 +18,7 @@
 @implementation TwoViewController
 
 + (void)load {
-    [self mapName:@"twoVC" withParams:@{@"name": @"title"}];
+    [self mapName:@"twoVC" withParams:@{@"title": @"name"}];
 }
 
 - (void)viewDidLoad {

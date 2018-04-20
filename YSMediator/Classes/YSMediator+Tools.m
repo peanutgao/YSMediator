@@ -144,6 +144,7 @@ static const char *getPropertyType(objc_property_t property) {
     if (!mapDict || [mapDict isEqual:[NSNull null]]) return params;
     
     NSMutableDictionary *result = [NSMutableDictionary dictionaryWithCapacity:params.count];
+    //NSLog(@"\n%@", params);
     [params enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         @autoreleasepool {
             NSString *k = key;

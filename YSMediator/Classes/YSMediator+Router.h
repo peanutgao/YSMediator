@@ -16,25 +16,25 @@
  
  @param nameString 映射字段, 非空
  @param toClassName baseWebViewController 类名名称字符, 非空
- @param paramsMapDict 映射参数字典, key为url参数, value为类的对应的参数, 如果参数一致, 可以不写
+ @param paramsMapDict 映射参数字典. key为当前类的要映射的属性字段, value为url中要映射的参数key; 如果参数一致, 可以不写
  */
-+ (BOOL)mapBaseWebViewWithName:(NSString *)nameString
-                   toClassName:(NSString *)toClassName
-                 paramsMapDict:(NSDictionary *)paramsMapDict;
++ (BOOL)mapBaseWebViewWithName:(NSString *_Nonnull)nameString
+                   toClassName:(NSString *_Nonnull)toClassName
+                 paramsMapDict:(NSDictionary *_Nullable)paramsMapDict;
 
 /**
  注册Router跳转的URL Scheme 和 Host
 
- @param scheme 跳转的URL Scheme, 不能为空
- @param host 跳转的URL Host, 不能为空
+ @param scheme 跳转的URL Scheme,不能为空
+ @param host 跳转的URL Host
  */
-+ (void)registerScheme:(NSString *)scheme andHost:(NSString *)host;
++ (void)registerScheme:(NSString *_Nonnull)scheme andHost:(NSString *_Nullable)host;
 
 /**
  打开跳转链接,如果是http或者https,会直接打开注册的baseWebView,
  如果urlStr是注册的scheme,会尝试打开原生注册的页面
  */
-+ (void)openURL:(NSString *)urlStr;
++ (void)openURL:(NSString *_Nonnull)urlStr;
 
 /**
  打开跳转链接,如果是http或者https,会直接打开注册的baseWebView,
@@ -43,15 +43,15 @@
  @param urlStr 映射的url字段
  @param filter 限制跳转的规则,params是解析出来的参数字典,可根据字段检查是否允许打开页面
  */
-+ (void)openURL:(NSString *)urlStr withFilter:(BOOL(^)(NSDictionary *params))filter;
++ (void)openURL:(NSString *_Nonnull)urlStr withFilter:(BOOL(^)(NSDictionary *params))filter;
 
 
 /**
  通过映射字符串跳转页面
 
  @param path 映射的路径的字符串, 不能为空
- @param params 映射的参数字典, @{映射的字段: 当前参数}
+ @param params 映射参数字典. key为当前类的要映射的属性字段, value为url中要映射的参数key; 如果参数一致, 可以不写
  */
-+ (void)openPath:(NSString *)path withParams:(NSDictionary *)params;
++ (void)openPath:(NSString *_Nonnull)path withParams:(NSDictionary *_Nullable)params;
 
 @end

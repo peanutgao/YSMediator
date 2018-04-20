@@ -94,11 +94,16 @@ static const void *ys_urlHostKey = "ys_urlHostKey";
     if (b) return;
     
     void(^failureHandler)(void) = ^{
+        NSLog(@"\n");
+        NSLog(@"=====================================");
+        NSLog(@"============> Warning <============");
         NSLog(@"无法打开URL:\n<当前Scheme: %@, 注册的Scheme: %@>\n<当前Host: %@, 注册的Host: %@>",\
               url.scheme,\
               [YSMediator shareMediator].urlScheme,\
               url.host,\
               [YSMediator shareMediator].urlHost);
+        NSLog(@"=====================================\n");
+        NSLog(@"\n");
     };
     
     [self searchPathInfo:url.path successHandler:^(YSMapModel *obj) {

@@ -25,12 +25,12 @@
  @endcode
 
  @param vcString 跳转的目标控制器名字, 可以是字符串也可以是映射的字段
- @param params 传递的参数字典, 可以是映射的字段, 也可以key要和push到的控制器接口的参数名一致
+ @param params 传递的参数字典, key可以是映射的字段, 也可以要目标控制器属性名一致
  @param flag push时是否显示动画
  @param callBack push完成后回调
  */
-+ (void)pushToViewController:(NSString *)vcString
-                withParams:(NSDictionary *)params
++ (void)pushToViewController:(NSString *_Nonnull)vcString
+                withParams:(NSDictionary *_Nullable)params
                   animated:(BOOL)flag
                   callBack:(void(^)(void))callBack;
 
@@ -42,8 +42,8 @@
  @param flag push时是否显示动画
  @param callBack push完成后回调
  */
-+ (void)pushViewController:(__kindof UIViewController *)vc
-                withParams:(NSDictionary *)params
++ (void)pushViewController:(__kindof UIViewController *_Nonnull)vc
+                withParams:(NSDictionary *_Nullable)params
                   animated:(BOOL)flag
                   callBack:(void(^)(void))callBack;
 
@@ -63,12 +63,12 @@
  @endcode
  
  @param vcString 跳转的目标控制器, 可以是字符串也可以是映射的字段
- @param params 传递的参数字典, 可以是映射的字段, 也可以key要和push到的控制器接口的参数名一致
+ @param params 传递的参数字典, key可以是映射的字段, 也可以要目标控制器属性名一致
  @param flag push时是否显示动画
  @param callBack push完成后回调
  */
-+ (void)presentToViewController:(NSString *)vcString
-                     withParams:(NSDictionary *)params
++ (void)presentToViewController:(NSString *_Nonnull)vcString
+                     withParams:(NSDictionary *_Nullable)params
                        animated:(BOOL)flag
                        callBack:(void(^)(void))callBack;
 
@@ -80,8 +80,8 @@
  @param flag present时是否显示动画
  @param callBack present完成后回调
  */
-+ (void)presentViewController:(__kindof UIViewController *)vc
-                   withParams:(NSDictionary *)params
++ (void)presentViewController:(__kindof UIViewController *_Nonnull)vc
+                   withParams:(NSDictionary *_Nullable)params
                      animated:(BOOL)flag
                      callBack:(void(^)(void))callBack;
 
@@ -95,7 +95,7 @@
  @param vcName 支持ViewController类字符串 映射字符串 以及 ../../ 相对路径的方式
  @param flag 是否需要动画
  */
-+ (void)popToViewControllerName:(NSString *)vcName animated:(BOOL)flag;
++ (void)popToViewControllerName:(NSString *_Nonnull)vcName animated:(BOOL)flag;
 
 /**
  dismiss控制器
@@ -106,7 +106,6 @@
 + (void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^ __nullable)(void))completion;
 
 /// 当前页面最顶端的控制器
-
 + (UIViewController *)topViewController;
 
 @end

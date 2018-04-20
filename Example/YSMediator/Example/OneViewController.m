@@ -17,7 +17,7 @@
 
 // 在 + load函数中注册当前控制器
 + (void)load {
-    [self mapName:@"oneVC" withParams:@{@"name": @"title"}];
+    [self mapName:@"oneVC" withParams:@{@"title": @"name"}];
 }
 
 

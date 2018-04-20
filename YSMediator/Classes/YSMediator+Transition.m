@@ -210,10 +210,12 @@ typedef NS_ENUM(NSInteger, YSMediatorShowType) {
         }
     }
     
+    NSLog(@"\n");
     NSLog(@"=====================================");
     NSLog(@"============> Warning <============");
     NSLog(@"    堆栈中没有找到要返回的控制器!!!");
-    NSLog(@"=====================================");
+    NSLog(@"=====================================\n");
+    NSLog(@"\n");
 }
 
 + (Class)mapClassByName:(NSString *)name {

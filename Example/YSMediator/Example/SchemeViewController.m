@@ -18,9 +18,9 @@
 
 + (void)load {
     [self mapName:@"schemeDemoPage" withParams:@{
-                                           @"id": @"mid",
-                                           @"name": @"title"
-                                           }];
+                                                 @"mid": @"id",
+                                                 @"title": @"name"
+                                                 }];
 }
 
 - (void)viewDidLoad {
