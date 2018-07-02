@@ -37,7 +37,7 @@ static const void *ys_registerInfosKey = "ys_registerInfosKey";
 
 + (void)registerScheme:(NSString *)scheme andHost:(NSString *)host {
     if (scheme == nil || ![scheme isKindOfClass:[NSString class]]) {
-        YSMediatorAssert(@"注册信息错误"); return;
+        YSMediatorLog(@"注册信息错误"); return;
     }
     
     YSMediator *instance = [YSMediator shareMediator];
@@ -46,7 +46,7 @@ static const void *ys_registerInfosKey = "ys_registerInfosKey";
 
 + (void)registerUrlInfos:(NSDictionary <NSString *, NSArray *> *_Nonnull)UrlInfos {
     if (UrlInfos == nil) {
-        YSMediatorAssert(@"注册信息不能为空"); return;
+        YSMediatorLog(@"注册信息不能为空"); return;
     }
     
     YSMediator *instance = [YSMediator shareMediator];
@@ -65,7 +65,7 @@ static const void *ys_registerInfosKey = "ys_registerInfosKey";
 
 + (void)openPath:(NSString *)path withParams:(NSDictionary *)params {
     if (isEmptyString(path)) {
-        YSMediatorAssert(@"path不能为空!!!"); return;
+        YSMediatorLog(@"path不能为空!!!"); return;
     }
     [self searchPathInfo:path successHandler:^(YSMapModel *obj) {
         [YSMediator pushToViewController:obj.mapClassName
@@ -73,7 +73,7 @@ static const void *ys_registerInfosKey = "ys_registerInfosKey";
                                 animated:YES callBack:NULL];
         
     } failureHandler:^(NSError *error){
-        YSMediatorAssert(error.localizedDescription);
+        YSMediatorLog(error.localizedDescription);
     }];
 }
 
@@ -83,7 +83,7 @@ static const void *ys_registerInfosKey = "ys_registerInfosKey";
 
 + (void)openURL:(NSString *)urlStr withFilter:(BOOL(^)(NSDictionary *params))filter {
     if (isEmptyString(urlStr)) {
-        YSMediatorAssert(@"urlStr为空!!!"); return;
+        YSMediatorLog(@"urlStr为空!!!"); return;
     }
     
     NSURL *url = [NSURL URLWithString:urlStr];
@@ -105,7 +105,7 @@ static const void *ys_registerInfosKey = "ys_registerInfosKey";
         [self openInNativePageOfURL:url withMapObj:obj andFilter:filter];
         
     } failureHandler:^(NSError *error){
-        YSMediatorAssert(error.localizedDescription);
+        YSMediatorLog(error.localizedDescription);
     }];
 }
 

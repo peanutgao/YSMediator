@@ -26,7 +26,7 @@ typedef NS_ENUM(NSInteger, YSMediatorShowType) {
                     animated:(BOOL)flag
                     callBack:(void(^)(void))callBack {
     if (vcString == nil) {
-        YSMediatorAssert(@"跳转的控制器名不能为空"); return;
+        YSMediatorLog(@"跳转的控制器名不能为空"); return;
     }
     [self jumpToTargetWithVCString:vcString
                             params:params
@@ -54,7 +54,7 @@ typedef NS_ENUM(NSInteger, YSMediatorShowType) {
                        animated:(BOOL)flag
                        callBack:(void(^)(void))callBack {
     if (vcString == nil) {
-        YSMediatorAssert(@"跳转的控制器名不能为空"); return;
+        YSMediatorLog(@"跳转的控制器名不能为空"); return;
     }
 
     [self jumpToTargetWithVCString:vcString
@@ -105,7 +105,7 @@ typedef NS_ENUM(NSInteger, YSMediatorShowType) {
                 UINavigationController *nav = from.navigationController;
                 if (!nav) {
                     NSString *str = [NSString stringWithFormat:@"控制器:%@ 没有导航控制器", from];
-                    YSMediatorAssert(str);
+                    YSMediatorLog(str);
                     return;
                 }
                 
@@ -156,8 +156,8 @@ typedef NS_ENUM(NSInteger, YSMediatorShowType) {
 #pragma mark - Pop
 
 + (void)popToViewControllerName:(NSString *)vcName animated:(BOOL)flag {
-    if (vcName ==  nil) {
-        YSMediatorAssert(@"返回的控制器名不能为空!!!"); return;
+    if (vcName == nil) {
+        YSMediatorLog(@"返回的控制器名不能为空!!!"); return;
     }
     
     Class clazz = NSClassFromString(vcName);
@@ -192,7 +192,7 @@ typedef NS_ENUM(NSInteger, YSMediatorShowType) {
     }
 
     // 到此标明遍历结束, 在堆栈中没有找到要pop的控制器
-    YSMediatorAssert(@"当前NavController堆栈中没有当前类型的控制器对象");
+    YSMediatorLog(@"当前NavController堆栈中没有当前类型的控制器对象");
 }
 
 + (void)popToViewControllerByVCClass:(Class)clazz animated:(BOOL)flag {
@@ -209,16 +209,6 @@ typedef NS_ENUM(NSInteger, YSMediatorShowType) {
             }
         }
     }
-    
-//    for(NSInteger i = nav.viewControllers.count - 1; i >= 0; i--) {
-//        @autoreleasepool {
-//            to = [nav.viewControllers objectAtIndex:i];
-//            if ([to isMemberOfClass:clazz]) {
-//                [nav popToViewController:to animated:flag];
-//                return;
-//            }
-//        }
-//    }
     
     NSLog(@"\n");
     NSLog(@"=====================================");
@@ -267,7 +257,7 @@ typedef NS_ENUM(NSInteger, YSMediatorShowType) {
     }
     
     NSString *errorStr = @"没有找到当前类型的控制器类, 请检查是否有添加映射";
-    YSMediatorAssert(errorStr);
+    YSMediatorLog(errorStr);
         
     if (result) {
         NSError *error = [NSError errorWithDomain:YS_MEDIATOR_ERROR_DOMAIN

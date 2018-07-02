@@ -9,12 +9,15 @@
 #import <UIKit/UIKit.h>
 
 #define YSMediatorAssert(desc) {\
-            NSLog(@"\n\n\
-                    ============================\n\
-           !!!!!! %@ !!!!!!\n\
-                    ============================\n\
-                    ", desc);\
+            YSMediatorLog(desc);\
             NSAssert(NO, desc);\
+        }
+#define YSMediatorLog(desc) {\
+            NSLog(@"\n\n\
+            ============================\n\
+                !!!!!! %@ !!!!!!\n\
+            ============================\n\n\
+            ", desc);\
         }
 
 #define YS_MEDIATOR_ERROR_DOMAIN @"com.ysmediator.error"
